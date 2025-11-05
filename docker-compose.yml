@@ -1,0 +1,71 @@
+services:
+  # Base de données
+  db:
+    image: mariadb:10.11
+    container_name: bedrock_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    labels:
+      - "traefik.enable=false"
+
+  # PHP-FPM (Bedrock)
+  php:
+    image: wodby/php:8.2
+    container_name: bedrock_php
+    working_dir: /var/www/html
+    environment:
+      DB_NAME: wordpress
+      DB_USER: wp_user
+      DB_PASSWORD: wp_password
+      DB_HOST: db:3306
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=false"
+
+  # Nginx pour servir le site
+  nginx:
+    image: wodby/nginx:1.25
+    container_name: bedrock_nginx
+    depends_on:
+      - php
+    environment:
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_ROOT: /var/www/html/web
+    volumes:
+      - .:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bedrock.rule=Host(`bedrock.localhost`)"
+      - "traefik.http.routers.bedrock.entrypoints=web"
+      - "traefik.http.routers.bedrock-secure.rule=Host(`bedrock.localhost`)"
+      - "traefik.http.routers.bedrock-secure.entrypoints=websecure"
+      - "traefik.http.routers.bedrock-secure.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bedrock.loadbalancer.server.port=80"
+
+  # phpMyAdmin (optionnel)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: bedrock_phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root_password
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.phpmyadmin.rule=Host(`pma.bedrock.localhost`)"
+      - "traefik.http.routers.phpmyadmin.entrypoints=web"
+      - "traefik.http.routers.phpmyadmin-secure.rule=Host(`pma.bedrock.localhost`)"
+      - "traefik.http.routers.phpmyadmin-secure.entrypoints=websecure"
+      - "traefik.http.routers.phpmyadmin-secure.tls.certresolver=letsencrypt"
+
+volumes:
+  db_data:
