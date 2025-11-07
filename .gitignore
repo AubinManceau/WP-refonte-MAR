@@ -2,8 +2,6 @@
 web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
-!web/app/mu-plugins/searchwp/
-!web/app/mu-plugins/facetwp/
 web/app/themes/twentytwentyfive/
 web/app/themes/marmite/node_modules
 web/app/themes/marmite/style.css
