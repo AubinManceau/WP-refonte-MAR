@@ -2,8 +2,14 @@
 web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
+!web/app/mu-plugins/searchwp/
+!web/app/mu-plugins/facetwp/
 web/app/themes/twentytwentyfive/
+web/app/themes/marmite/node_modules
+web/app/themes/marmite/style.css
 web/app/upgrade
+web/app/wflogs
+web/app/ewww
 web/app/uploads/*
 !web/app/uploads/.gitkeep
 web/app/cache/*
@@ -22,7 +28,6 @@ web/.htaccess
 
 # Composer
 /vendor
-auth.json
 
 # WP-CLI
 wp-cli.local.yml
