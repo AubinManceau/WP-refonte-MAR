@@ -1,9 +1,11 @@
+version: "3.9"
+
 services:
   # Base de données
   db:
     image: mariadb:10.11
     container_name: bedrock_db
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wp_user
@@ -11,61 +13,74 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
       - db_data:/var/lib/mysql
-    labels:
-      - "traefik.enable=false"
+    networks:
+      - bedrock_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # PHP-FPM (Bedrock)
   php:
     image: wodby/php:8.2
     container_name: bedrock_php
+    restart: unless-stopped
     working_dir: /var/www/html
     environment:
       DB_NAME: wordpress
       DB_USER: wp_user
       DB_PASSWORD: wp_password
       DB_HOST: db:3306
+      PHP_MEMORY_LIMIT: 512M
+      PHP_UPLOAD_MAX_FILESIZE: 64M
+      PHP_POST_MAX_SIZE: 64M
+      PHP_MAX_EXECUTION_TIME: 300
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:cached
     depends_on:
-      - db
-    labels:
-      - "traefik.enable=false"
+      db:
+        condition: service_healthy
+    networks:
+      - bedrock_net
 
   # Nginx pour servir le site
   nginx:
     image: wodby/nginx:1.25
     container_name: bedrock_nginx
+    restart: unless-stopped
     depends_on:
       - php
     environment:
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html/web
+      NGINX_VHOST_PRESET: wordpress
+    ports:
+      - "8080:80"
     volumes:
-      - .:/var/www/html
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.bedrock.rule=Host(`bedrock.localhost`)"
-      - "traefik.http.routers.bedrock.entrypoints=web"
-      - "traefik.http.routers.bedrock-secure.rule=Host(`bedrock.localhost`)"
-      - "traefik.http.routers.bedrock-secure.entrypoints=websecure"
-      - "traefik.http.routers.bedrock-secure.tls.certresolver=letsencrypt"
-      - "traefik.http.services.bedrock.loadbalancer.server.port=80"
+      - .:/var/www/html:cached
+    networks:
+      - bedrock_net
 
   # phpMyAdmin (optionnel)
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: bedrock_phpmyadmin
-    restart: always
+    restart: unless-stopped
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root_password
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.phpmyadmin.rule=Host(`pma.bedrock.localhost`)"
-      - "traefik.http.routers.phpmyadmin.entrypoints=web"
-      - "traefik.http.routers.phpmyadmin-secure.rule=Host(`pma.bedrock.localhost`)"
-      - "traefik.http.routers.phpmyadmin-secure.entrypoints=websecure"
-      - "traefik.http.routers.phpmyadmin-secure.tls.certresolver=letsencrypt"
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - bedrock_net
 
 volumes:
   db_data:
+
+networks:
+  bedrock_net:
+    driver: bridge
