@@ -189,7 +189,11 @@ Text Domain: marmite
     display: none !important;
   }
 }
-@layer utilities;
+@layer utilities {
+  .static {
+    position: static;
+  }
+}
 @layer base {
   body {
     background-image: url('./assets/img/bg.png');
