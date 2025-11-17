@@ -1,3 +1,19 @@
 @theme {
-    
+    /**
+        Custom theme fonts
+     */
+    --font-kulium-light: "Kulium Light", "sans-serif";
+    --font-kulium: "Kulium", "sans-serif";
+    --font-cabin: "Cabin", "sans-serif";
+    --font-baroneys: "Baroneys", "sans-serif";
+
+    /**
+        Custom theme colors
+     */
+    --color-blanc: #FFFFFF;
+    --color-rouge: #C1121F;
+    --color-marron: #780000;
+    --color-beige: #FBD2AC;
+    --color-beige-clair: #FDF0D5;
+    --color-noir: #000000;
 }

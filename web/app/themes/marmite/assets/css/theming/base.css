@@ -1,3 +1,5 @@
 @layer base {
-    
+    body {
+        @apply bg-[url('./assets/img/bg.png')] bg-repeat bg-center;
+    }
 }

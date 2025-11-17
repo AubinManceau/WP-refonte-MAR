@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Baroneys";
+    font-display: swap;
+    src: url("assets/css/theming/fonts/BaroneysTextured.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Cabin";
+    font-display: swap;
+    src: url("assets/css/theming/fonts/Cabin-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Kulium";
+    font-display: swap;
+    src: url("assets/css/theming/fonts/KuliumPark-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Kulium Light";
+    font-display: swap;
+    src: url("assets/css/theming/fonts/KuliumPark-Light.ttf") format("truetype");
+}
