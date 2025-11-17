@@ -1,86 +1,34 @@
-version: "3.9"
+version: "3.3"
 
 services:
-  # Base de données
-  db:
-    image: mariadb:10.11
-    container_name: bedrock_db
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wp_user
-      MYSQL_PASSWORD: wp_password
-      MYSQL_ROOT_PASSWORD: root_password
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - bedrock_net
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  # PHP-FPM (Bedrock)
-  php:
-    image: wodby/php:8.2
-    container_name: bedrock_php
-    restart: unless-stopped
-    working_dir: /var/www/html
-    environment:
-      DB_NAME: wordpress
-      DB_USER: wp_user
-      DB_PASSWORD: wp_password
-      DB_HOST: db:3306
-      PHP_MEMORY_LIMIT: 512M
-      PHP_UPLOAD_MAX_FILESIZE: 64M
-      PHP_POST_MAX_SIZE: 64M
-      PHP_MAX_EXECUTION_TIME: 300
-    volumes:
-      - .:/var/www/html:cached
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - bedrock_net
-
-  # Nginx pour servir le site
-  nginx:
-    image: wodby/nginx:1.25
-    container_name: bedrock_nginx
-    restart: unless-stopped
-    depends_on:
-      - php
-    environment:
-      NGINX_BACKEND_HOST: php
-      NGINX_SERVER_ROOT: /var/www/html/web
-      NGINX_VHOST_PRESET: wordpress
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/var/www/html:cached
-    networks:
-      - bedrock_net
-
-  # phpMyAdmin (optionnel)
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: bedrock_phpmyadmin
-    restart: unless-stopped
-    environment:
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: root_password
-    ports:
-      - "8081:80"
+  wordpress:
     depends_on:
       - db
-    networks:
-      - bedrock_net
+    image: docker.io/bitpoke/wordpress-runtime:bedrock
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      WP_HOME: ${WP_HOME}
+      WP_SITEURL: ${WP_SITEURL}
+      WP_ENV: ${WP_ENV}
+
+  db:
+    image: percona:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
 
 volumes:
-  db_data:
-
-networks:
-  bedrock_net:
-    driver: bridge
+  db_data: {}
