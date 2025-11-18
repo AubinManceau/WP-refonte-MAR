@@ -133,6 +133,7 @@ Config::define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? true);
 
 // Disable script concatenation
 Config::define('CONCATENATE_SCRIPTS', false);
+Config::define('FS_METHOD', 'direct');
 
 /**
  * Debugging Settings
