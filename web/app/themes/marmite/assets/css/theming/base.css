@@ -1,8 +1,6 @@
 @layer base {
     body {
         @apply bg-[url('./assets/img/bg.png')] bg-repeat bg-center;
-    }
-    footer {
-        @apply bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center;
+        @apply font-cabin text-sm;
     }
 }

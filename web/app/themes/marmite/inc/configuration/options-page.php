@@ -34,7 +34,7 @@ class MarmiteMenuPage {
             function () {
                 ?>
                 <input type="email" name="marmite_email"
-                    value="<?= esc_attr(get_option('marmite_email')) ?>"
+                    value="<?= esc_attr(get_option('marmite_email', 'lamarmite.roselyne@gmail.com')) ?>"
                     style="width: 100%;">
                 <?php
             },
@@ -49,7 +49,7 @@ class MarmiteMenuPage {
             function () {
                 ?>
                 <input type="text" name="marmite_telephone"
-                    value="<?= esc_attr(get_option('marmite_telephone')) ?>"
+                    value="<?= esc_attr(get_option('marmite_telephone', '06 06 06 06 06')) ?>"
                     style="width: 100%;">
                 <?php
             },
@@ -64,7 +64,7 @@ class MarmiteMenuPage {
             function () {
                 ?>
                 <input type="url" name="marmite_facebook"
-                    value="<?= esc_attr(get_option('marmite_facebook')) ?>"
+                    value="<?= esc_attr(get_option('marmite_facebook', 'https://www.facebook.com/lamarmitearoselyne')) ?>"
                     style="width: 100%;">
                 <?php
             },
@@ -79,7 +79,7 @@ class MarmiteMenuPage {
             function () {
                 ?>
                 <input type="url" name="marmite_instagram"
-                    value="<?= esc_attr(get_option('marmite_instagram')) ?>"
+                    value="<?= esc_attr(get_option('marmite_instagram', 'https://www.instagram.com/lamarmitearoselyne')) ?>"
                     style="width: 100%;">
                 <?php
             },

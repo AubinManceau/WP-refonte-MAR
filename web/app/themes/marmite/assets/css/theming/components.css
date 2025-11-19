@@ -1,3 +1,33 @@
 @layer components {
-    
+    .container {
+        @apply mx-auto px-4;
+        @apply md:!max-w-[750px] md:px-0;
+        @apply lg:!max-w-[970px];
+        @apply xl:!max-w-[1200px];
+    }
+
+    footer {
+        @apply bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center;
+        @apply py-12;
+        .wrapper {
+            @apply flex flex-col justify-between items-center gap-10;
+            @apply md:flex-row md:gap-0;
+            .menu-container {
+                @apply flex flex-col gap-10;
+                @apply md:flex-row md:gap-15;
+                .footer-title {
+                    @apply text-beige-clair text-4xl font-cabin mb-4;
+                }
+                .footer-link {
+                    @apply flex flex-col gap-2;
+                    > * {
+                        @apply text-beige-clair list-none no-underline;
+                    }
+                }
+            }
+            .socials-container {
+                @apply flex flex-col gap-10;
+            }
+        }
+    }
 }

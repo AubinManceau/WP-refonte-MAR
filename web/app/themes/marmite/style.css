@@ -10,6 +10,7 @@ License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: marmite
 */
+@layer properties;
 @font-face {
   font-family: "Baroneys";
   font-display: swap;
@@ -37,8 +38,15 @@ Text Domain: marmite
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --font-cabin: "Cabin", "sans-serif";
+    --color-beige-clair: #FDF0D5;
   }
 }
 @layer base {
@@ -193,18 +201,178 @@ Text Domain: marmite
   .static {
     position: static;
   }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+  .filter {
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
 }
 @layer base {
   body {
     background-image: url('./assets/img/bg.png');
     background-position: center;
     background-repeat: repeat;
+    font-family: var(--font-cabin);
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+}
+@layer forms;
+@layer components {
+  .container {
+    margin-inline: auto;
+    padding-inline: calc(var(--spacing) * 4);
+    @media (width >= 48rem) {
+      max-width: 750px !important;
+    }
+    @media (width >= 48rem) {
+      padding-inline: calc(var(--spacing) * 0);
+    }
+    @media (width >= 64rem) {
+      max-width: 970px !important;
+    }
+    @media (width >= 80rem) {
+      max-width: 1200px !important;
+    }
   }
   footer {
     background-image: url('./assets/img/footer-bg.png');
     background-position: center;
     background-repeat: repeat;
+    padding-block: calc(var(--spacing) * 12);
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(var(--spacing) * 10);
+      @media (width >= 48rem) {
+        flex-direction: row;
+      }
+      @media (width >= 48rem) {
+        gap: calc(var(--spacing) * 0);
+      }
+      .menu-container {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) * 10);
+        @media (width >= 48rem) {
+          flex-direction: row;
+        }
+        @media (width >= 48rem) {
+          gap: calc(var(--spacing) * 15);
+        }
+        .footer-title {
+          margin-bottom: calc(var(--spacing) * 4);
+          font-family: var(--font-cabin);
+          font-size: var(--text-4xl);
+          line-height: var(--tw-leading, var(--text-4xl--line-height));
+          color: var(--color-beige-clair);
+        }
+        .footer-link {
+          display: flex;
+          flex-direction: column;
+          gap: calc(var(--spacing) * 2);
+          > * {
+            list-style-type: none;
+            color: var(--color-beige-clair);
+            text-decoration-line: none;
+          }
+        }
+      }
+      .socials-container {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) * 10);
+      }
+    }
   }
 }
-@layer forms;
-@layer components;
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+    }
+  }
+}
