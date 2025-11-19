@@ -6,6 +6,7 @@
         @apply xl:!max-w-[1200px];
     }
 
+    /* Footer */
     footer {
         @apply bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center;
         @apply py-12;
@@ -27,6 +28,82 @@
             }
             .socials-container {
                 @apply flex flex-col gap-10;
+            }
+        }
+    }
+
+    /* Date Card */
+    .date-card {
+        @apply bg-blanc p-2 min-h-[470px] max-w-[500px] mx-auto flex flex-col shadow-md;
+        @apply max-md:odd:-rotate-1 max-md:even:rotate-2;
+        @apply md:p-4;
+        &:nth-child(4n) {
+            @apply md:-rotate-1;
+        }
+        &:nth-child(4n+1) {
+            @apply md:-rotate-1;
+        }
+        &:nth-child(4n+2) {
+            @apply md:rotate-2;
+        }
+        &:nth-child(4n+3) {
+            @apply md:rotate-2;
+        }
+        img {
+            @apply w-full h-[175px] object-cover mb-6;
+            @apply md:h-[235px];
+        }
+        .title-3 {
+            @apply border-b-2 border-marron;
+        }
+        .date {
+            @apply font-kulium text-marron text-xl my-2;
+        }
+        .description {
+            @apply leading-[2.25];
+        }
+    }
+
+    /* Homepage */
+    .homepage {
+        .hero {
+            @apply max-h-[640px] flex justify-center overflow-hidden;
+            img {
+                @apply w-auto h-full;
+            }
+        }
+        .hero-content {
+            @apply bg-[url('./assets/img/hero-bg.png')] bg-repeat bg-center;
+            @apply py-8;
+            .title-1 {
+                @apply text-center mb-6;
+            }
+            .description {
+                @apply text-center text-blanc mx-auto leading-[2.25];
+                @apply md:max-w-[60%];
+            }
+        }
+        .video {
+            @apply py-8;
+            .wrapper {
+                @apply flex flex-col gap-12;
+                .video-wrapper {
+                    @apply bg-blanc aspect-[16/9] w-full shadow-md;
+                    iframe {
+                        @apply w-full h-full p-2;
+                        @apply md:p-4;
+                    }
+                }
+            }
+        }
+        .dates {
+            @apply pt-8 pb-16;
+            .wrapper {
+                @apply flex flex-col gap-12;
+                .dates-container {
+                    @apply grid grid-cols-1 gap-y-12;
+                    @apply md:grid-cols-2 md:gap-x-8;
+                }
             }
         }
     }

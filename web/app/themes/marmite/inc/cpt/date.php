@@ -23,19 +23,60 @@ function marmite_register_date_custom_post_type() {
 
     register_post_type('date', [
         'labels' => $labels,
-        'public' => true,
+        'public' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_icon' => 'dashicons-calendar',
-        'has_archive' => true,
-        'publicly_queryable' => true,
-        'exclude_from_search' => false,
-        'rewrite' => [
-            'slug' => 'nos-dates',
-            'with_front' => false
-        ],
+        'has_archive' => false,
+        'rewrite' => false,
         'supports' => ['title', 'editor'],
         'show_in_rest' => true,
     ]);
 }
 add_action('init', 'marmite_register_date_custom_post_type');
+
+add_action('acf/init', 'marmite_register_date_acf_fields');
+function marmite_register_date_acf_fields() {
+
+    acf_add_local_field_group([
+        'key' => 'group_date_fields',
+        'title' => 'Champs Date d\'événement',
+        'fields' => [
+            [
+                'key' => 'field_date_banner_image',
+                'label' => 'Image de couverture',
+                'name' => 'date_banner_image',
+                'type' => 'image',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'required' => true,
+            ],
+            [
+                'key' => 'field_date_event',
+                'label' => 'Date de l\'événement',
+                'name' => 'date_event',
+                'type' => 'date_picker',
+                'required' => true,
+            ],
+            [
+                'key' => 'field_date_description',
+                'label' => 'Description',
+                'name' => 'date_description',
+                'type' => 'textarea',
+                'rows' => 4,
+                'required' => true,
+            ]
+        ],
+
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'date',
+                ],
+            ],
+        ],
+    ]);
+}

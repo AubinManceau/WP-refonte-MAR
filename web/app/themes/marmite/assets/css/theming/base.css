@@ -3,4 +3,21 @@
         @apply bg-[url('./assets/img/bg.png')] bg-repeat bg-center;
         @apply font-cabin text-sm;
     }
+
+    .title-1 {
+        @apply text-4xl font-baroneys text-beige-clair;
+        @apply md:text-5xl;
+    }
+
+    .title-2 {
+        @apply text-4xl font-baroneys text-marron relative;
+        @apply md:text-6xl;
+        &::after {
+            @apply absolute -bottom-4 left-1/2 -translate-x-1/2 content-[''] h-[9px] w-[150px] bg-contain bg-[url('./assets/img/title-deco.svg')] bg-no-repeat bg-center;
+        }
+    }
+
+    .title-3 {
+        @apply text-4xl font-baroneys text-marron;
+    }
 }
