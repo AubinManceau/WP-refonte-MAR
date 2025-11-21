@@ -26,7 +26,7 @@ jobs:
             git fetch origin master
             git reset --hard origin/master
             docker compose down
-            docker compose up -d --build
+            docker compose -f docker-compose.prod.yml up -d --build
             until docker compose exec mariadb mysqladmin ping -h "localhost" --silent; do
               echo "Waiting for database connection..."
               sleep 10
