@@ -8,6 +8,9 @@
 <body>
     <header>
         <div class="container">
+            <button class="contact">
+                <?php echo file_get_contents(get_template_directory() . '/assets/img/contact-bandeau.svg'); ?>
+            </button>
             <div class="wrapper">
                 <div class="show-2-first-only menu-nav">
                     <?php

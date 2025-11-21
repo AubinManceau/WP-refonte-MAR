@@ -50,6 +50,9 @@ Text Domain: marmite
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
     --font-weight-bold: 700;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-kulium: "Kulium", "sans-serif";
@@ -230,6 +233,9 @@ Text Domain: marmite
       max-width: 96rem;
     }
   }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
   .text-center {
     text-align: center;
   }
@@ -322,19 +328,20 @@ Text Domain: marmite
     }
   }
   header {
-    position: relative;
-    background-image: url('./assets/img/footer-bg.png');
     background-position: center;
     background-repeat: repeat;
     --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    @media (width >= 64rem) {
+      background-image: url('./assets/img/footer-bg.png');
+    }
     &::before {
       content: var(--tw-content);
       position: absolute;
     }
     &::before {
       content: var(--tw-content);
-      top: calc(var(--spacing) * 0);
+      top: calc(var(--spacing) * -2);
     }
     &::before {
       content: var(--tw-content);
@@ -342,11 +349,11 @@ Text Domain: marmite
     }
     &::before {
       content: var(--tw-content);
-      z-index: 2;
+      z-index: 4;
     }
     &::before {
       content: var(--tw-content);
-      height: 20px;
+      height: 25px;
     }
     &::before {
       content: var(--tw-content);
@@ -354,11 +361,11 @@ Text Domain: marmite
     }
     &::before {
       content: var(--tw-content);
-      background-image: url('./assets/img/bandeau.png');
+      background-image: url('./assets/img/bandeau.svg');
     }
     &::before {
       content: var(--tw-content);
-      background-size: contain;
+      background-size: cover;
     }
     &::before {
       content: var(--tw-content);
@@ -366,25 +373,115 @@ Text Domain: marmite
     }
     &::before {
       content: var(--tw-content);
-      background-repeat: repeat;
+      background-repeat: repeat-x;
     }
     .container {
       position: relative;
-      margin-bottom: calc(var(--spacing) * 10);
+      @media (width >= 64rem) {
+        margin-bottom: calc(var(--spacing) * 5);
+      }
+      .contact {
+        position: absolute;
+        top: calc(var(--spacing) * -14);
+        right: calc(var(--spacing) * 2);
+        z-index: 3;
+        cursor: pointer;
+        transition-property: all;
+        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+        transition-duration: var(--tw-duration, var(--default-transition-duration));
+        --tw-duration: 200ms;
+        transition-duration: 200ms;
+        --tw-ease: var(--ease-in-out);
+        transition-timing-function: var(--ease-in-out);
+        @media (width >= 64rem) {
+          top: calc(var(--spacing) * -8);
+        }
+        @media (width >= 64rem) {
+          right: calc(var(--spacing) * -6);
+        }
+        &::before {
+          content: var(--tw-content);
+          pointer-events: none;
+        }
+        &::before {
+          content: var(--tw-content);
+          position: absolute;
+        }
+        &::before {
+          content: var(--tw-content);
+          bottom: calc(var(--spacing) * 12);
+        }
+        &::before {
+          content: var(--tw-content);
+          left: calc(1/2 * 100%);
+        }
+        &::before {
+          content: var(--tw-content);
+          height: 20px;
+        }
+        &::before {
+          content: var(--tw-content);
+          width: 27px;
+        }
+        &::before {
+          content: var(--tw-content);
+          --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+          translate: var(--tw-translate-x) var(--tw-translate-y);
+        }
+        &::before {
+          content: var(--tw-content);
+          background-image: url('./assets/img/burger.svg');
+        }
+        &::before {
+          content: var(--tw-content);
+          background-size: contain;
+        }
+        &::before {
+          content: var(--tw-content);
+          background-position: center;
+        }
+        &::before {
+          content: var(--tw-content);
+          background-repeat: no-repeat;
+        }
+        @media (width >= 64rem) {
+          &::before {
+            content: var(--tw-content);
+            background-image: url('./assets/img/contact.svg');
+          }
+        }
+        &:hover {
+          top: calc(var(--spacing) * -10);
+          transition-property: all;
+          transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+          transition-duration: var(--tw-duration, var(--default-transition-duration));
+          --tw-duration: 200ms;
+          transition-duration: 200ms;
+          --tw-ease: var(--ease-in-out);
+          transition-timing-function: var(--ease-in-out);
+          @media (width >= 64rem) {
+            top: calc(var(--spacing) * -4);
+          }
+        }
+      }
       .wrapper {
+        display: none;
         position: relative;
         z-index: 2;
-        display: flex;
         width: 100%;
         align-items: flex-start;
         justify-content: space-between;
-        padding-block: calc(var(--spacing) * 6);
+        padding-top: calc(var(--spacing) * 6);
+        padding-bottom: calc(var(--spacing) * 4);
+        @media (width >= 64rem) {
+          display: flex;
+        }
         .menu-nav {
           margin-block: auto;
           display: flex;
           flex: 1;
           align-items: center;
-          gap: calc(var(--spacing) * 16);
+          justify-content: space-evenly;
           li {
             position: relative;
             margin-inline: calc(var(--spacing) * 6);
@@ -500,21 +597,21 @@ Text Domain: marmite
             }
           }
         }
-        .show-2-first-only {
-          justify-content: flex-start;
-        }
         .logo-container {
-          margin-bottom: -90px;
+          margin-inline: calc(var(--spacing) * 16);
+          margin-top: 10px;
+          margin-bottom: -50px;
           display: flex;
           width: fit-content;
           justify-content: center;
         }
-        .show-2-last-only {
-          justify-content: flex-end;
-        }
       }
     }
     .rounded-header {
+      display: none;
+      @media (width >= 64rem) {
+        display: block;
+      }
       background-image: url('./assets/img/footer-bg.png');
       background-position: center;
       background-repeat: repeat;
@@ -524,8 +621,8 @@ Text Domain: marmite
       top: calc(var(--spacing) * 0);
       left: calc(1/2 * 100%);
       z-index: 1;
-      height: calc(100% + 80px);
-      width: 400px;
+      height: calc(100% + 70px);
+      width: 350px;
       --tw-translate-x: -50%;
       translate: var(--tw-translate-x) var(--tw-translate-y);
       border-bottom-right-radius: calc(infinity * 1px);
@@ -729,6 +826,26 @@ Text Domain: marmite
     }
   }
 }
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -867,6 +984,14 @@ Text Domain: marmite
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-leading {
   syntax: "*";
   inherits: false;
@@ -883,6 +1008,11 @@ Text Domain: marmite
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
@@ -914,6 +1044,8 @@ Text Domain: marmite
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-duration: initial;
+      --tw-ease: initial;
       --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-border-style: solid;
