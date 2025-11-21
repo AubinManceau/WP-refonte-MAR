@@ -1,0 +1,37 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            cd ${{ secrets.PROJECT_PATH }}
+            git fetch origin master
+            git reset --hard origin/master
+            docker compose down
+            docker compose up -d --build
+            until docker compose exec mariadb mysqladmin ping -h "localhost" --silent; do
+              echo "Waiting for database connection..."
+              sleep 10
+            done
+            docker compose exec php composer install --no-dev --optimize-autoloader
+            docker compose exec php npm install --prefix web/app/themes/marmite
+            docker compose exec php npm run build --prefix web/app/themes/marmite
+            docker image prune -f

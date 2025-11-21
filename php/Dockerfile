@@ -6,6 +6,8 @@ ARG GID=1000
 RUN apk add --no-cache \
         $PHPIZE_DEPS \
         mariadb-client \
+        nodejs \
+        npm \
     && docker-php-ext-install mysqli pdo pdo_mysql \
     && addgroup -g $GID appgroup \
     && adduser -D -u $UID -G appgroup appuser \

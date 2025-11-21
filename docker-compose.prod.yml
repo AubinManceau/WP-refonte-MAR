@@ -8,7 +8,6 @@ services:
     depends_on:
       - php
     networks:
-      - backend
       - traefik_net
     labels:
       - "traefik.enable=true"
@@ -23,24 +22,26 @@ services:
       - .:/var/www/html
     working_dir: /var/www/html
     networks:
-      - backend
+      - traefik_net
 
   mariadb:
     image: mariadb:10.6
     restart: always
+    env_file:
+      - .env
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
-      - backend
+      - traefik_net
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
+    env_file:
+      - .env
     environment:
       PMA_HOST: ${DB_HOST}
       PMA_USER: ${DB_USER}
@@ -48,7 +49,6 @@ services:
     depends_on:
       - mariadb
     networks:
-      - backend
       - traefik_net
     labels:
       - "traefik.enable=true"
