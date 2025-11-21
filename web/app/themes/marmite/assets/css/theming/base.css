@@ -4,6 +4,22 @@
         @apply font-cabin text-sm;
     }
 
+    header {
+        .show-2-first-only > * {
+            @apply hidden;
+        }
+        .show-2-first-only > :nth-child(-n+2) {
+            @apply list-item;
+        }
+    
+        .show-2-last-only > * {
+            @apply hidden;
+        }
+        .show-2-last-only > :nth-last-child(-n+2) {
+            @apply list-item;
+        }
+    }
+
     .title-1 {
         @apply text-4xl font-baroneys text-beige-clair;
         @apply md:text-5xl;

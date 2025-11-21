@@ -30,7 +30,7 @@ $instagram  = get_option('marmite_instagram');
                         <div class="footer-link">
                             <?php
                             wp_nav_menu( array(
-                                    'theme_location' => 'footer-menu-navigation',
+                                    'theme_location' => 'menu-principal',
                                     'container'      => '',
                                     'fallback_cb'    => false,
                                     'items_wrap'     => '%3$s'

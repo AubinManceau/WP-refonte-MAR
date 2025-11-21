@@ -6,6 +6,46 @@
         @apply xl:!max-w-[1200px];
     }
 
+    header {
+        @apply relative bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center shadow-md;
+        @apply before:absolute before:top-0 before:left-0 before:w-full before:h-[20px] before:bg-contain before:bg-[url('./assets/img/bandeau.png')] before:bg-repeat before:bg-center before:z-2;
+        .container {
+            @apply relative mb-10;
+            .wrapper {
+                @apply relative flex justify-between items-start w-full py-6 z-2;
+                .menu-nav {
+                    @apply flex items-center gap-16 flex-1 my-auto;
+                    li {
+                        @apply relative list-none w-[110px] text-center mx-6;
+                        a {
+                            @apply no-underline text-beige-clair text-[16px] leading-1;
+                        }
+                        &:hover {
+                            @apply after:content-[''] after:absolute after:top-1/2 after:-right-6 after:-translate-y-1/2 after:h-[17px] after:w-[15px] after:bg-contain after:bg-[url('./assets/img/hover-header.svg')] after:bg-no-repeat after:bg-center;
+                            @apply before:content-[''] before:absolute before:top-1/2 before:-left-6 before:-translate-y-1/2 before:h-[17px] before:w-[15px] before:bg-contain before:bg-[url('./assets/img/hover-header.svg')] before:bg-no-repeat before:bg-center before:rotate-180;
+                            a {
+                                @apply font-bold;
+                            }
+                        }
+                    }
+                }
+                .show-2-first-only {
+                    @apply justify-start;
+                }
+                .logo-container {
+                    @apply flex justify-center w-fit mb-[-90px];
+                }
+                .show-2-last-only {
+                    @apply justify-end;
+                }
+            }
+        }
+        .rounded-header {
+            @apply bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center shadow-md;
+            @apply absolute top-0 left-1/2 translate-x-[-50%] h-[calc(100%+80px)] w-[400px] z-1 rounded-b-full;
+        }
+    }
+
     /* Footer */
     footer {
         @apply bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center;
