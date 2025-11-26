@@ -7,17 +7,38 @@
     }
 
     header {
-        @apply lg:bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center shadow-md;
-        @apply before:absolute before:-top-2 before:left-0 before:w-full before:h-[25px] before:bg-cover before:bg-[url('./assets/img/bandeau.svg')] before:bg-repeat-x before:bg-center before:z-4;
-        .container {
-            @apply relative lg:mb-5;
-            .contact {
-                @apply absolute -top-14 lg:-top-8 right-2 lg:-right-6 z-3 cursor-pointer transition-all duration-200 ease-in-out;
-                @apply before:absolute before:bottom-12 before:left-1/2 before:-translate-x-1/2 before:w-[27px] before:h-[20px] before:bg-contain lg:before:bg-[url('./assets/img/contact.svg')] before:bg-[url('./assets/img/burger.svg')] before:bg-no-repeat before:bg-center before:pointer-events-none;
-                &:hover {
-                    @apply -top-10 lg:-top-4 transition-all duration-200 ease-in-out;
+        @apply lg:bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center shadow-md relative;
+        .contact-container {
+            @apply absolute h-[25px] w-full transition-all duration-300 ease-in-out;
+            &.active {
+                @apply h-[600px] transition-all duration-300 ease-in-out;
+                .bandeau .form-wrapper {
+                    @apply h-full;
                 }
             }
+            .bandeau {
+                @apply absolute -top-2 left-0 w-full h-full bg-cover bg-[url('./assets/img/bandeau.png')] bg-repeat-x bg-bottom z-4;
+                .form-wrapper {
+                    @apply h-0 overflow-hidden transition-all duration-300 ease-in-out max-w-[580px] mx-auto;
+                    @apply flex flex-col justify-center gap-4 px-6;
+                    input, textarea {
+                        @apply w-full bg-blanc px-4 py-2 rounded-sm;
+                    }
+                    textarea {
+                        @apply h-[150px] resize-none;
+                    }
+                }
+            }
+            .contact {
+                @apply absolute -bottom-30 right-2 lg:right-2 xl:right-6 z-3 cursor-pointer transition-all duration-200 ease-in-out;
+                @apply before:absolute before:bottom-12 before:left-1/2 before:-translate-x-1/2 before:w-[27px] before:h-[20px] before:bg-contain lg:before:bg-[url('./assets/img/contact.svg')] before:bg-[url('./assets/img/burger.svg')] before:bg-no-repeat before:bg-center before:pointer-events-none;
+                &:hover {
+                    @apply -bottom-34 transition-all duration-200 ease-in-out;
+                }
+            }
+        }
+        .container {
+            @apply lg:mb-5;
             .wrapper {
                 @apply hidden;
                 @apply relative lg:flex justify-between items-start w-full pt-6 pb-4 z-2;

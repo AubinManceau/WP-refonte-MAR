@@ -7,10 +7,22 @@
     </head>
 <body>
     <header>
-        <div class="container">
-            <button class="contact">
+        <div id="bandeau" class="contact-container">
+            <div class="bandeau">
+                <form class="form-wrapper">
+                    <h2 class="title-2 blanc mb-8 text-center">Contact</h2>
+                    <input type="text" placeholder="Nom / Prénom">
+                    <input type="email" placeholder="Adresse mail">
+                    <input type="text" placeholder="Objet">
+                    <textarea placeholder="Votre message"></textarea>
+                    <button class="btn-primary">Envoyer</button>
+                </form>
+            </div>
+            <button id="contact-btn" class="contact">
                 <?php echo file_get_contents(get_template_directory() . '/assets/img/contact-bandeau.svg'); ?>
             </button>
+        </div>
+        <div class="container">
             <div class="wrapper">
                 <div class="show-2-first-only menu-nav">
                     <?php
