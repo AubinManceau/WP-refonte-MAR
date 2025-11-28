@@ -6,18 +6,80 @@
         @apply xl:!max-w-[1200px];
     }
 
+    /* Header */
     header {
-        @apply lg:bg-[url('./assets/img/footer-bg.png')] bg-repeat bg-center shadow-md;
-        @apply before:absolute before:-top-2 before:left-0 before:w-full before:h-[25px] before:bg-cover before:bg-[url('./assets/img/bandeau.svg')] before:bg-repeat-x before:bg-center before:z-4;
-        .container {
-            @apply relative lg:mb-5;
-            .contact {
-                @apply absolute -top-14 lg:-top-8 right-2 lg:-right-6 z-3 cursor-pointer transition-all duration-200 ease-in-out;
-                @apply before:absolute before:bottom-12 before:left-1/2 before:-translate-x-1/2 before:w-[27px] before:h-[20px] before:bg-contain lg:before:bg-[url('./assets/img/contact.svg')] before:bg-[url('./assets/img/burger.svg')] before:bg-no-repeat before:bg-center before:pointer-events-none;
-                &:hover {
-                    @apply -top-10 lg:-top-4 transition-all duration-200 ease-in-out;
+        @apply relative shadow-md;
+        @apply lg:bg-[url('./assets/img/footer-bg.png')] lg:bg-repeat lg:bg-center;
+        .contact-container {
+            @apply absolute h-[20px] w-full transition-all duration-300 ease-in-out z-10;
+            @apply md:h-[25px];
+            &.active {
+                @apply fixed h-[calc(100vh-120px)] transition-all duration-300 ease-in-out;
+                .bandeau {
+                    .form-wrapper {
+                        @apply h-full;
+                        @apply max-lg:hidden;
+                        &.mobile {
+                            @apply flex h-fit;
+                            @apply md:w-1/2;
+                        }
+                    }
+                    .mobile-menu {
+                        @apply h-full px-6 py-6;
+                        @apply lg:hidden;
+                    }
                 }
             }
+            .bandeau {
+                @apply absolute -top-2 left-0 w-full h-full bg-cover bg-[url('./assets/img/bandeau.png')] bg-repeat-x bg-bottom z-12;
+                .form-wrapper {
+                    @apply h-0 overflow-hidden transition-all duration-300 ease-in-out flex flex-col justify-center gap-4;
+                    @apply lg:max-w-[580px] lg:mx-auto;
+                    h2 {
+                        @apply max-lg:hidden;
+                    }
+                    input, textarea {
+                        @apply w-full bg-blanc px-4 py-2 rounded-sm;
+                    }
+                    textarea {
+                        @apply max-h-[100px] resize-none;
+                        @apply lg:max-h-[150px];
+                    }
+                }
+                .mobile-menu {
+                    @apply h-0 overflow-hidden transition-all duration-300 ease-in-out;
+                    @apply flex flex-col gap-12;
+                    .logo-container {
+                        @apply mx-auto;
+                    }
+                    .container-mobile {
+                        @apply flex gap-12 flex-col h-fit overflow-y-auto;
+                        @apply md:flex-row md:justify-center;
+                        .menu-nav{
+                            @apply flex flex-col gap-4;
+                            li {
+                                @apply list-none;
+                                a {
+                                    @apply no-underline text-beige-clair text-[16px] leading-1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .contact {
+                @apply absolute -bottom-24 right-2 z-11 cursor-pointer transition-all duration-200 ease-in-out;
+                @apply lg:-bottom-26 xl:right-6;
+                @apply before:absolute before:bottom-12 before:left-1/2 before:-translate-x-1/2 before:w-[27px] before:h-[20px] before:bg-contain lg:before:bg-[url('./assets/img/contact.svg')] before:bg-[url('./assets/img/burger.svg')] before:bg-no-repeat before:bg-center before:pointer-events-none;
+                &:hover {
+                    @apply -bottom-24 transition-all duration-200 ease-in-out;
+                    @apply lg:-bottom-30;
+                }
+            }
+        }
+        .container {
+            @apply relative z-8;
+            @apply lg:mb-5;
             .wrapper {
                 @apply hidden;
                 @apply relative lg:flex justify-between items-start w-full pt-6 pb-4 z-2;

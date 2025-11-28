@@ -31,9 +31,19 @@
         &::after {
             @apply absolute -bottom-4 left-1/2 -translate-x-1/2 content-[''] h-[9px] w-[150px] bg-contain bg-[url('./assets/img/title-deco.svg')] bg-no-repeat bg-center;
         }
+        &.blanc {
+            @apply text-blanc;
+            &::after {
+                @apply bg-[url('./assets/img/title-deco-blanc.svg')];
+            }
+        }
     }
 
     .title-3 {
         @apply text-4xl font-baroneys text-marron;
+    }
+
+    .btn-primary {
+        @apply flex bg-rouge text-blanc font-bold rounded-sm w-fit px-12 py-2;
     }
 }

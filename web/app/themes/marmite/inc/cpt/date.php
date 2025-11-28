@@ -66,6 +66,13 @@ function marmite_register_date_acf_fields() {
                 'type' => 'textarea',
                 'rows' => 4,
                 'required' => true,
+            ],
+            [
+                'key' => 'field_date_link',
+                'label' => 'Lien de la billetterie',
+                'name' => 'date_link',
+                'type' => 'url',
+                'required' => true,
             ]
         ],
 

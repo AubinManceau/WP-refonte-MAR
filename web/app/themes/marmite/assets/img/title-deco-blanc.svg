@@ -1,0 +1,31 @@
+<svg width="152" height="10" viewBox="0 0 152 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_g_323_383)">
+<mask id="mask0_323_383" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="76" height="10">
+<path d="M75.5142 9.30005H0.299927V0.300049H75.5142V9.30005Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_323_383)">
+<path d="M75.509 0.300043C78.0695 0.300043 80.1452 2.31476 80.1452 4.80005C80.1452 7.28533 78.0695 9.30005 75.509 9.30005C72.9485 9.30005 70.8728 7.28533 70.8728 4.80005C70.8728 2.31476 72.9485 0.300043 75.509 0.300043Z" fill="#fff"/>
+<path d="M3.0445 2.13612C4.56022 2.13612 5.78895 3.32875 5.78895 4.79993C5.78895 6.27111 4.56022 7.46375 3.0445 7.46375C1.52878 7.46375 0.300049 6.27111 0.300049 4.79993C0.300049 3.32875 1.52878 2.13612 3.0445 2.13612Z" fill="#fff"/>
+<path d="M62.4444 9.30005C59.8839 9.30005 33.6138 4.80005 8.86426 4.80005C33.6991 4.80005 59.8839 0.300043 62.4444 0.300043C65.0049 0.300043 67.0806 2.31476 67.0806 4.80005C67.0806 7.28533 65.0049 9.30005 62.4444 9.30005Z" fill="#fff"/>
+</g>
+<mask id="mask1_323_383" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="75" y="0" width="76" height="10">
+<path d="M150.728 9.30005H75.5142V0.300049H150.728V9.30005Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_323_383)">
+<path d="M75.5195 0.300043C78.08 0.300043 80.1557 2.31476 80.1557 4.80005C80.1557 7.28533 78.08 9.30005 75.5195 9.30005C72.959 9.30005 70.8833 7.28533 70.8833 4.80005C70.8833 2.31476 72.959 0.300043 75.5195 0.300043Z" fill="#fff"/>
+<path d="M147.985 2.13612C149.5 2.13612 150.729 3.32875 150.729 4.79993C150.729 6.27111 149.5 7.46375 147.985 7.46375C146.469 7.46375 145.24 6.27111 145.24 4.79993C145.24 3.32875 146.469 2.13612 147.985 2.13612Z" fill="#fff"/>
+<path d="M88.5842 9.30005C91.1447 9.30005 117.415 4.80005 142.164 4.80005C117.33 4.80005 91.1447 0.300043 88.5842 0.300043C86.0237 0.300043 83.948 2.31476 83.948 4.80005C83.948 7.28533 86.0237 9.30005 88.5842 9.30005Z" fill="#fff"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_g_323_383" x="4.88162e-05" y="4.88162e-05" width="151.028" height="9.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="1.25 1.25" numOctaves="3" seed="2176" />
+<feDisplacementMap in="shape" scale="0.60000002384185791" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_323_383">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+</defs>
+</svg>
