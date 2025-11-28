@@ -979,14 +979,21 @@ Text Domain: marmite
   }
   .gallery-page {
     .container {
-      padding-block: calc(var(--spacing) * 24);
+      padding-block: calc(var(--spacing) * 12);
+      @media (width >= 64rem) {
+        padding-block: calc(var(--spacing) * 24);
+      }
       .title-2 {
         text-align: center;
       }
       .custom-gallery {
         margin-top: calc(var(--spacing) * 18);
-        columns: 2;
+        columns: 1;
         gap: calc(var(--spacing) * 5);
+        margin-top: calc(var(--spacing) * 14);
+        @media (width >= 48rem) {
+          columns: 2;
+        }
         img {
           margin-bottom: calc(var(--spacing) * 5);
           width: 100%;
