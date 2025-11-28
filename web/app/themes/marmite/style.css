@@ -214,6 +214,17 @@ Text Domain: marmite
   }
 }
 @layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
   .static {
     position: static;
   }
@@ -246,6 +257,11 @@ Text Domain: marmite
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .lg\:hidden {
+    @media (width >= 64rem) {
+      display: none;
+    }
   }
 }
 @layer base {
@@ -365,7 +381,7 @@ Text Domain: marmite
     .contact-container {
       position: absolute;
       z-index: 10;
-      height: 25px;
+      height: 20px;
       width: 100%;
       transition-property: all;
       transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -374,6 +390,9 @@ Text Domain: marmite
       transition-duration: 300ms;
       --tw-ease: var(--ease-in-out);
       transition-timing-function: var(--ease-in-out);
+      @media (width >= 48rem) {
+        height: 25px;
+      }
       &.active {
         position: fixed;
         height: calc(100vh - 120px);
@@ -390,9 +409,18 @@ Text Domain: marmite
             @media (width < 64rem) {
               display: none;
             }
+            &.mobile {
+              display: flex;
+              height: fit-content;
+              @media (width >= 48rem) {
+                width: calc(1/2 * 100%);
+              }
+            }
           }
           .mobile-menu {
             height: 100%;
+            padding-inline: calc(var(--spacing) * 6);
+            padding-block: calc(var(--spacing) * 6);
             @media (width >= 64rem) {
               display: none;
             }
@@ -411,9 +439,47 @@ Text Domain: marmite
         background-position: bottom;
         background-repeat: repeat-x;
         .form-wrapper {
-          margin-inline: auto;
+          display: flex;
           height: calc(var(--spacing) * 0);
-          max-width: 580px;
+          flex-direction: column;
+          justify-content: center;
+          gap: calc(var(--spacing) * 4);
+          overflow: hidden;
+          transition-property: all;
+          transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+          transition-duration: var(--tw-duration, var(--default-transition-duration));
+          --tw-duration: 300ms;
+          transition-duration: 300ms;
+          --tw-ease: var(--ease-in-out);
+          transition-timing-function: var(--ease-in-out);
+          @media (width >= 64rem) {
+            margin-inline: auto;
+          }
+          @media (width >= 64rem) {
+            max-width: 580px;
+          }
+          h2 {
+            @media (width < 64rem) {
+              display: none;
+            }
+          }
+          input, textarea {
+            width: 100%;
+            border-radius: var(--radius-sm);
+            background-color: var(--color-blanc);
+            padding-inline: calc(var(--spacing) * 4);
+            padding-block: calc(var(--spacing) * 2);
+          }
+          textarea {
+            max-height: 100px;
+            resize: none;
+            @media (width >= 64rem) {
+              max-height: 150px;
+            }
+          }
+        }
+        .mobile-menu {
+          height: calc(var(--spacing) * 0);
           overflow: hidden;
           transition-property: all;
           transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -424,19 +490,37 @@ Text Domain: marmite
           transition-timing-function: var(--ease-in-out);
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          gap: calc(var(--spacing) * 4);
-          padding-inline: calc(var(--spacing) * 6);
-          input, textarea {
-            width: 100%;
-            border-radius: var(--radius-sm);
-            background-color: var(--color-blanc);
-            padding-inline: calc(var(--spacing) * 4);
-            padding-block: calc(var(--spacing) * 2);
+          gap: calc(var(--spacing) * 12);
+          .logo-container {
+            margin-inline: auto;
           }
-          textarea {
-            height: 150px;
-            resize: none;
+          .container-mobile {
+            display: flex;
+            height: fit-content;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 12);
+            overflow-y: auto;
+            @media (width >= 48rem) {
+              flex-direction: row;
+            }
+            @media (width >= 48rem) {
+              justify-content: center;
+            }
+            .menu-nav {
+              display: flex;
+              flex-direction: column;
+              gap: calc(var(--spacing) * 4);
+              li {
+                list-style-type: none;
+                a {
+                  font-size: 16px;
+                  --tw-leading: calc(var(--spacing) * 1);
+                  line-height: calc(var(--spacing) * 1);
+                  color: var(--color-beige-clair);
+                  text-decoration-line: none;
+                }
+              }
+            }
           }
         }
       }

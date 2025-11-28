@@ -8,20 +8,37 @@
 <body>
     <header>
         <div id="bandeau" class="contact-container">
+
+            <!-- Bandeau contenant le menu mobile + formulaire -->
             <div class="bandeau">
-                <form class="form-wrapper">
-                    <h2 class="title-2 blanc mb-8 text-center">Contact</h2>
-                    <input type="text" placeholder="Nom / Prénom">
-                    <input type="email" placeholder="Adresse mail">
-                    <input type="text" placeholder="Objet">
-                    <textarea placeholder="Votre message"></textarea>
-                    <button class="btn-primary">Envoyer</button>
-                </form>
-                <div class="mobile-menu">
-                    
+
+                <!-- Zone mobile : menu + logo (cachée sur desktop) -->
+                <div class="mobile-menu lg:hidden">
+                    <div class="logo-container">
+                        <a href="<?php echo home_url('/'); ?>">
+                            <?php echo file_get_contents(get_template_directory() . '/assets/img/logo-header.svg'); ?>
+                        </a>
+                    </div>
+
+                    <div class="container-mobile">
+                        <nav class="menu-nav" aria-label="Menu principal">
+                            <?php
+                            wp_nav_menu( array(
+                                'theme_location' => 'menu-principal',
+                                'container'      => '',
+                                'fallback_cb'    => false,
+                                'items_wrap'     => '%3$s'
+                            ));
+                            ?>
+                        </nav>
+    
+                        <?php get_template_part('template-parts/contact-form', null, ['class' => 'mobile']); ?>
+                    </div>
                 </div>
+
+                <?php get_template_part('template-parts/contact-form'); ?>
             </div>
-            <button id="contact-btn" class="contact">
+            <button id="contact-btn" class="contact" aria-label="Ouvrir le formulaire de contact">
                 <?php echo file_get_contents(get_template_directory() . '/assets/img/contact-bandeau.svg'); ?>
             </button>
         </div>
@@ -37,7 +54,7 @@
                     ) );
                     ?>
                 </div>
-                 <div class="logo-container">
+                <div class="logo-container">
                     <a href="<?php echo home_url('/'); ?>">
                         <?php echo file_get_contents(get_template_directory() . '/assets/img/logo-header.svg'); ?>
                     </a>
