@@ -212,4 +212,19 @@
             }
         }
     }
+
+    .gallery-page {
+        .container {
+            @apply py-24;
+            .title-2 {
+                @apply text-center;
+            }
+            .custom-gallery {
+                @apply columns-2 gap-5 mt-18;
+                img {
+                    @apply w-full mb-5 break-inside-avoid shadow-md p-3 bg-white;
+                }
+            }
+        }
+    }
 }
