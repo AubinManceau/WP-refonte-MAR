@@ -351,15 +351,20 @@ Text Domain: marmite
   }
   header {
     position: relative;
-    background-position: center;
-    background-repeat: repeat;
     --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     @media (width >= 64rem) {
       background-image: url('./assets/img/footer-bg.png');
     }
+    @media (width >= 64rem) {
+      background-position: center;
+    }
+    @media (width >= 64rem) {
+      background-repeat: repeat;
+    }
     .contact-container {
       position: absolute;
+      z-index: 10;
       height: 25px;
       width: 100%;
       transition-property: all;
@@ -370,7 +375,8 @@ Text Domain: marmite
       --tw-ease: var(--ease-in-out);
       transition-timing-function: var(--ease-in-out);
       &.active {
-        height: 600px;
+        position: fixed;
+        height: calc(100vh - 120px);
         transition-property: all;
         transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
         transition-duration: var(--tw-duration, var(--default-transition-duration));
@@ -378,15 +384,26 @@ Text Domain: marmite
         transition-duration: 300ms;
         --tw-ease: var(--ease-in-out);
         transition-timing-function: var(--ease-in-out);
-        .bandeau .form-wrapper {
-          height: 100%;
+        .bandeau {
+          .form-wrapper {
+            height: 100%;
+            @media (width < 64rem) {
+              display: none;
+            }
+          }
+          .mobile-menu {
+            height: 100%;
+            @media (width >= 64rem) {
+              display: none;
+            }
+          }
         }
       }
       .bandeau {
         position: absolute;
         top: calc(var(--spacing) * -2);
         left: calc(var(--spacing) * 0);
-        z-index: 4;
+        z-index: 12;
         height: 100%;
         width: 100%;
         background-image: url('./assets/img/bandeau.png');
@@ -426,8 +443,8 @@ Text Domain: marmite
       .contact {
         position: absolute;
         right: calc(var(--spacing) * 2);
-        bottom: calc(var(--spacing) * -30);
-        z-index: 3;
+        bottom: calc(var(--spacing) * -24);
+        z-index: 11;
         cursor: pointer;
         transition-property: all;
         transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -437,7 +454,7 @@ Text Domain: marmite
         --tw-ease: var(--ease-in-out);
         transition-timing-function: var(--ease-in-out);
         @media (width >= 64rem) {
-          right: calc(var(--spacing) * 2);
+          bottom: calc(var(--spacing) * -26);
         }
         @media (width >= 80rem) {
           right: calc(var(--spacing) * 6);
@@ -494,7 +511,7 @@ Text Domain: marmite
           }
         }
         &:hover {
-          bottom: calc(var(--spacing) * -34);
+          bottom: calc(var(--spacing) * -24);
           transition-property: all;
           transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
           transition-duration: var(--tw-duration, var(--default-transition-duration));
@@ -502,10 +519,15 @@ Text Domain: marmite
           transition-duration: 200ms;
           --tw-ease: var(--ease-in-out);
           transition-timing-function: var(--ease-in-out);
+          @media (width >= 64rem) {
+            bottom: calc(var(--spacing) * -30);
+          }
         }
       }
     }
     .container {
+      position: relative;
+      z-index: 8;
       @media (width >= 64rem) {
         margin-bottom: calc(var(--spacing) * 5);
       }

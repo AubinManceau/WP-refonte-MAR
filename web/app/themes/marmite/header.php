@@ -17,6 +17,9 @@
                     <textarea placeholder="Votre message"></textarea>
                     <button class="btn-primary">Envoyer</button>
                 </form>
+                <div class="mobile-menu">
+                    
+                </div>
             </div>
             <button id="contact-btn" class="contact">
                 <?php echo file_get_contents(get_template_directory() . '/assets/img/contact-bandeau.svg'); ?>
