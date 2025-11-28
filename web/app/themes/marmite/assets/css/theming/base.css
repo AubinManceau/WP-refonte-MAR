@@ -43,6 +43,11 @@
         @apply text-4xl font-baroneys text-marron;
     }
 
+    .title-name {
+        @apply text-4xl font-baroneys text-marron;
+        @apply md:text-6xl;
+    }
+
     .btn-primary {
         @apply flex bg-rouge text-blanc font-bold rounded-sm w-fit px-12 py-2;
     }

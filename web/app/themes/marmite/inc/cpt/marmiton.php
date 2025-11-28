@@ -34,8 +34,53 @@ function marmite_register_marmiton_custom_post_type() {
             'slug' => 'la-cour-des-marmitons',
             'with_front' => false
         ],
-        'supports' => ['title', 'editor', 'thumbnail'],
+        'supports' => ['title', 'editor'],
         'show_in_rest' => true,
     ]);
 }
 add_action('init', 'marmite_register_marmiton_custom_post_type');
+
+add_action('acf/init', 'marmite_register_marmiton_acf_fields');
+function marmite_register_marmiton_acf_fields() {
+
+    acf_add_local_field_group([
+        'key' => 'group_marmiton_fields',
+        'title' => 'Champs Marmiton',
+        'fields' => [
+            [
+                'key' => 'field_marmiton_image',
+                'label' => 'Photo du marmiton',
+                'name' => 'marmiton_image',
+                'type' => 'image',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'required' => true,
+            ],
+            [
+                'key' => 'field_marmiton_instrument',
+                'label' => 'Instrument du marmiton',
+                'name' => 'marmiton_instrument',
+                'type' => 'text',
+                'required' => true,
+            ],
+            [
+                'key' => 'field_marmiton_bio',
+                'label' => 'Biographie du marmiton',
+                'name' => 'marmiton_bio',
+                'type' => 'textarea',
+                'rows' => 4,
+                'required' => false,
+            ]
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'marmiton',
+                ],
+            ],
+        ],
+    ]);
+}

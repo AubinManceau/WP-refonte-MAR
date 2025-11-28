@@ -42,6 +42,8 @@ Text Domain: marmite
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-4xl: 2.25rem;
@@ -51,6 +53,7 @@ Text Domain: marmite
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
     --font-weight-bold: 700;
+    --tracking-wider: 0.05em;
     --radius-sm: 0.25rem;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -256,6 +259,16 @@ Text Domain: marmite
   .text-center {
     text-align: center;
   }
+  .font-kulium {
+    font-family: var(--font-kulium);
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-marron {
+    color: var(--color-marron);
+  }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
@@ -335,6 +348,16 @@ Text Domain: marmite
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
     color: var(--color-marron);
+  }
+  .title-name {
+    font-family: var(--font-baroneys);
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+    color: var(--color-marron);
+    @media (width >= 48rem) {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
   }
   .btn-primary {
     display: flex;
@@ -1006,6 +1029,65 @@ Text Domain: marmite
       }
     }
   }
+  .marmiton-page {
+    .container {
+      padding-block: calc(var(--spacing) * 12);
+      @media (width >= 64rem) {
+        padding-block: calc(var(--spacing) * 24);
+      }
+      .title-2 {
+        text-align: center;
+      }
+      .banner {
+        margin-top: calc(var(--spacing) * 12);
+        margin-bottom: calc(var(--spacing) * 18);
+        width: 100%;
+        background-color: var(--color-white);
+        padding: calc(var(--spacing) * 3);
+        --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) * 12);
+        .marmiton-card {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: calc(var(--spacing) * 8);
+          &:nth-child(even) {
+            flex-direction: row-reverse;
+          }
+          .image-container {
+            width: 100%;
+            max-width: 600px;
+            img {
+              width: 100%;
+              object-fit: contain;
+            }
+          }
+          .marmiton-info {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            .marmiton-bio {
+              margin-top: calc(var(--spacing) * 4);
+              --tw-leading: 2.25;
+              line-height: 2.25;
+              --tw-tracking: var(--tracking-wider);
+              letter-spacing: var(--tracking-wider);
+            }
+          }
+          &:nth-child(even) {
+            .marmiton-info {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -1186,6 +1268,10 @@ Text Domain: marmite
   inherits: false;
   initial-value: solid;
 }
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -1230,6 +1316,7 @@ Text Domain: marmite
       --tw-ease: initial;
       --tw-leading: initial;
       --tw-border-style: solid;
+      --tw-tracking: initial;
     }
   }
 }
