@@ -38,6 +38,7 @@ Text Domain: marmite
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-white: #fff;
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
@@ -972,6 +973,35 @@ Text Domain: marmite
           @media (width >= 48rem) {
             column-gap: calc(var(--spacing) * 8);
           }
+        }
+      }
+    }
+  }
+  .gallery-page {
+    .container {
+      padding-block: calc(var(--spacing) * 12);
+      @media (width >= 64rem) {
+        padding-block: calc(var(--spacing) * 24);
+      }
+      .title-2 {
+        text-align: center;
+      }
+      .custom-gallery {
+        margin-top: calc(var(--spacing) * 18);
+        columns: 1;
+        gap: calc(var(--spacing) * 5);
+        margin-top: calc(var(--spacing) * 14);
+        @media (width >= 48rem) {
+          columns: 2;
+        }
+        img {
+          margin-bottom: calc(var(--spacing) * 5);
+          width: 100%;
+          break-inside: avoid;
+          background-color: var(--color-white);
+          padding: calc(var(--spacing) * 3);
+          --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+          box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
         }
       }
     }

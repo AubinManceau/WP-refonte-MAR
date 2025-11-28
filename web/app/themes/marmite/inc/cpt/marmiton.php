@@ -31,7 +31,7 @@ function marmite_register_marmiton_custom_post_type() {
         'publicly_queryable' => true,
         'exclude_from_search' => false,
         'rewrite' => [
-            'slug' => 'les-marmitons',
+            'slug' => 'la-cour-des-marmitons',
             'with_front' => false
         ],
         'supports' => ['title', 'editor', 'thumbnail'],

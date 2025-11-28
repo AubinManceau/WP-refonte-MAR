@@ -1,0 +1,5 @@
+{
+  "name": "marmite/custom-gallery",
+  "description": "Plugin WP pour galerie d'images personnalisée",
+  "type": "wordpress-plugin"
+}
