@@ -18,8 +18,7 @@ get_header(); ?>
                         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                     </div>
                     <div class="marmiton-info">
-                        <h3 class="title-name"><?php echo esc_html($name); ?></h3>
-                        <p class="font-kulium text-marron text-lg"><?php echo esc_html($instrument); ?></p>
+                        <h3 class="title-name"><?php echo esc_html($name); ?><span> - <?php echo esc_html($instrument); ?></span></h3>
                         <div class="marmiton-bio">
                             <?php echo wp_kses_post($bio); ?>
                         </div>

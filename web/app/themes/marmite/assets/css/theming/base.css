@@ -51,4 +51,8 @@
     .btn-primary {
         @apply flex bg-rouge text-blanc font-bold rounded-sm w-fit px-12 py-2;
     }
+
+    .btn-secondary {
+        @apply text-marron underline py-2 px-2;
+    }
 }

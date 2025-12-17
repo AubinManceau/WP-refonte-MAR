@@ -250,11 +250,23 @@ Text Domain: marmite
       max-width: 96rem;
     }
   }
+  .mt-auto {
+    margin-top: auto;
+  }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
   }
+  .flex {
+    display: flex;
+  }
+  .w-full {
+    width: 100%;
+  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .justify-end {
+    justify-content: flex-end;
   }
   .text-center {
     text-align: center;
@@ -369,6 +381,12 @@ Text Domain: marmite
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
     color: var(--color-blanc);
+  }
+  .btn-secondary {
+    padding-inline: calc(var(--spacing) * 2);
+    padding-block: calc(var(--spacing) * 2);
+    color: var(--color-marron);
+    text-decoration-line: underline;
   }
 }
 @layer forms;
