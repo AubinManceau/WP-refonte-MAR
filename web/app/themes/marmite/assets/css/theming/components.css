@@ -42,8 +42,7 @@
                         @apply w-full bg-blanc px-4 py-2 rounded-sm;
                     }
                     textarea {
-                        @apply max-h-[100px] resize-none;
-                        @apply lg:max-h-[150px];
+                        @apply h-[150px] resize-none;
                     }
                 }
                 .mobile-menu {
