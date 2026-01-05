@@ -48,7 +48,8 @@
     "wpackagist-plugin/wps-hide-login": "^1.9",
     "wpackagist-plugin/user-role-editor": "^4.64",
     "wpackagist-plugin/webp-uploads": "^2.5",
-    "marmite/custom-gallery": "*"
+    "marmite/custom-gallery": "*",
+    "wpackagist-plugin/wp-mail-smtp": "^4.7"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",

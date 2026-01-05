@@ -52,12 +52,3 @@ function marmite_enqueue_editor_assets(): void
     );
 }
 add_action('enqueue_block_editor_assets', 'marmite_enqueue_editor_assets', 20);
-
-function add_ajaxurl_to_frontend() {
-    ?>
-    <script type="text/javascript">
-        var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-    </script>
-    <?php
-}
-add_action('wp_head', 'add_ajaxurl_to_frontend');
