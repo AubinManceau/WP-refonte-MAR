@@ -5,4 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     contactBtn.addEventListener('click', function() {
         bandeau.classList.toggle('active');
     });
+
+    lightGallery(document.querySelector('.custom-gallery'), {
+        selector: 'img'
+    });
 });

@@ -50,12 +50,14 @@ get_header(); ?>
                         $description = get_field('field_date_description');
                         $image = get_field('field_date_banner_image');
                         $title = get_the_title();
+                        $link = get_field('field_date_link');
                     ?>
                     <?php get_template_part('template-parts/date-card', null, [
                         'date' => $date,
                         'description' => $description,
                         'image' => $image,
                         'title' => $title,
+                        'link' => $link,
                     ]); ?>
                     <?php endwhile; ?>
                 </div>

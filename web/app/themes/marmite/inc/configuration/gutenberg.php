@@ -5,6 +5,7 @@ add_filter('use_block_editor_for_post_type', '__return_false', 10);
 add_action('init', function() {
     remove_post_type_support('page', 'editor');
     remove_post_type_support('date', 'editor');
+    remove_post_type_support('marmiton', 'editor');
 });
 
 add_action('add_meta_boxes', function() {
@@ -17,4 +18,9 @@ add_action('add_meta_boxes', function() {
     remove_meta_box('commentstatusdiv', 'date', 'normal');
     remove_meta_box('commentsdiv', 'date', 'normal');
     remove_meta_box('revisionsdiv', 'date', 'normal');
+
+    remove_meta_box('authordiv', 'marmiton', 'normal');
+    remove_meta_box('commentstatusdiv', 'marmiton', 'normal');
+    remove_meta_box('commentsdiv', 'marmiton', 'normal');
+    remove_meta_box('revisionsdiv', 'marmiton', 'normal');
 });
