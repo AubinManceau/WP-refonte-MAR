@@ -52,3 +52,4 @@ function marmite_enqueue_editor_assets(): void
     );
 }
 add_action('enqueue_block_editor_assets', 'marmite_enqueue_editor_assets', 20);
+add_theme_support('title-tag');
