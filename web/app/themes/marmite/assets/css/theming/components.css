@@ -31,7 +31,8 @@
                 }
             }
             .bandeau {
-                @apply absolute -top-2 left-0 w-full h-full bg-cover bg-[url('./assets/img/bandeau.png')] bg-repeat-x bg-bottom z-12;
+                @apply absolute -top-2 left-0 w-full h-full bg-[url('./assets/img/bandeau.png')] bg-repeat-x bg-bottom z-12;
+                @apply lg:bg-cover;
                 .form-wrapper {
                     @apply h-0 overflow-hidden transition-all duration-300 ease-in-out flex flex-col justify-center gap-4;
                     @apply lg:max-w-[580px] lg:mx-auto;
