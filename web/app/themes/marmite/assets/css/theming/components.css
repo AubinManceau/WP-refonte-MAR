@@ -8,7 +8,7 @@
 
     /* Header */
     header {
-        @apply relative shadow-md;
+        @apply fixed top-0 left-0 w-full shadow-md z-10;
         @apply lg:bg-[url('./assets/img/footer-bg.png')] lg:bg-repeat lg:bg-center;
         .contact-container {
             @apply absolute h-[20px] w-full transition-all duration-300 ease-in-out z-10;
@@ -171,7 +171,7 @@
     /* Homepage */
     .homepage {
         .hero {
-            @apply max-h-[640px] flex justify-center overflow-hidden;
+            @apply max-h-[640px] flex justify-center overflow-hidden mt-[80px];
             img {
                 @apply w-auto h-full;
             }
@@ -214,7 +214,7 @@
 
     .gallery-page {
         .container {
-            @apply py-12;
+            @apply py-12 !mt-[80px];
             @apply lg:py-24;
             .title-2 {
                 @apply text-center;
@@ -231,7 +231,7 @@
 
     .marmiton-page {
         .container {
-            @apply py-12;
+            @apply py-12 !mt-[80px];
             @apply lg:py-24;
             .title-2 {
                 @apply text-center;
@@ -261,6 +261,22 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    .page-404 {
+        .container {
+            @apply flex flex-col-reverse items-center overflow-hidden !mt-[80px];
+            @apply lg:flex-row lg:justify-center;
+            img {
+                @apply w-auto h-full;
+            }
+            .title-2 {
+                @apply text-center;
+            }
+            .description {
+                @apply text-center mx-auto leading-[1.75] mt-[40px];
             }
         }
     }
