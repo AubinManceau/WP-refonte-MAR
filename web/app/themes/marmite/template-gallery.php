@@ -14,7 +14,7 @@ get_header(); ?>
             if (!empty($gallery_ids) && is_array($gallery_ids)) : ?>
                 <div class="custom-gallery">
                     <?php foreach ($gallery_ids as $image_id) : 
-                        $image_url = wp_get_attachment_image_url($image_id);
+                        $image_url = wp_get_attachment_image_url($image_id, 'full');
                         $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
                         ?>  
                         <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">

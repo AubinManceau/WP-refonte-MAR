@@ -224,7 +224,7 @@
                 @apply columns-1 gap-5 mt-18;
                 @apply md:columns-2 mt-14;
                 img {
-                    @apply w-full mb-5 break-inside-avoid shadow-md p-3 bg-white;
+                    @apply block w-full h-auto mb-5 break-inside-avoid shadow-md p-3 bg-white;
                 }
             }
         }

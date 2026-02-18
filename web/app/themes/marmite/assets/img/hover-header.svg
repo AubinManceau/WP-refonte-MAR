@@ -1,16 +1,3 @@
-<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_g_631_94)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1 8.59985C13.107 9.63058 9.22696 10.6114 8.21738 12.5488C7.2798 10.0357 3.38872 9.35788 2.72907 12.1194C4.31056 11.7071 5.57022 12.5647 5.76939 13.9227C5.99527 15.4619 4.91506 17.5307 2.42767 17.0212C-0.15359 16.4224 -0.49065 12.629 0.936262 10.8497C1.78963 9.76324 2.89704 9.038 4.16537 8.60007C2.89726 8.16166 1.78963 7.43693 0.936262 6.35048C-0.49065 4.57118 -0.15359 0.777819 2.42767 0.178775C4.91506 -0.330572 5.99527 1.73805 5.76939 3.27744C5.57022 4.63568 4.31056 5.49308 2.72932 5.08077C3.38872 7.8425 7.2798 7.16445 8.21738 4.65162C9.22722 6.58874 13.107 7.5691 15.1 8.59985Z" fill="#780000"/>
-</g>
-<defs>
-<filter id="filter0_g_631_94" x="-2.44156e-05" y="-1.52737e-06" width="15.2" height="17.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" numOctaves="3" seed="2469" />
-<feDisplacementMap in="shape" scale="0.20000000298023224" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
-<feMerge result="effect1_texture_631_94">
-<feMergeNode in="displacedImage"/>
-</feMerge>
-</filter>
-</defs>
+<svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 8.49986C13.007 9.53058 9.12699 10.5114 8.1174 12.4488C7.17983 9.93572 3.28874 9.25788 2.62909 12.0194C4.21058 11.6071 5.47024 12.4647 5.66941 13.8227C5.8953 15.3619 4.81508 17.4307 2.32769 16.9212C-0.253565 16.3224 -0.590625 12.529 0.836286 10.7497C1.68965 9.66324 2.79707 8.93801 4.06539 8.50007C2.79728 8.06167 1.68965 7.33694 0.836286 6.25048C-0.590625 4.47119 -0.253565 0.677821 2.32769 0.0787763C4.81508 -0.43057 5.8953 1.63806 5.66941 3.17745C5.47024 4.53568 4.21058 5.39308 2.62935 4.98078C3.28874 7.7425 7.17983 7.06445 8.1174 4.55162C9.12724 6.48874 13.007 7.46911 15 8.49986Z" fill="#780000"/>
 </svg>
