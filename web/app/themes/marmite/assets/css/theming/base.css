@@ -1,6 +1,6 @@
 @layer base {
     body {
-        @apply bg-[url('./assets/img/bg.png')] bg-repeat bg-center;
+        @apply bg-[url('./assets/img/bg.png')] bg-fixed bg-repeat bg-center;
         @apply font-cabin text-sm;
     }
 
